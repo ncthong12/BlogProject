@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import logo from "../../assets/images/logo.svg"
 import "./header.css"
 import { User } from "./User"

@@ -26,8 +26,6 @@ export const Login = () => {
     }
     //window.location.replace("/")
   }
-  //console.log(user)
-  console.log(FetchData)
   return (
     <>
       <section className='login'>

@@ -20,9 +20,9 @@ export const Account = () => {
     dispatch({ type: "UPDATE_START" });
     const updateUser = {
       userId: user._id,
-      username,
-      email,
-      password,
+      username: username || user.username,
+      email: email || user.email,
+      password: password || user.password,
     };
 
     if (file) {
@@ -32,7 +32,6 @@ export const Account = () => {
       data.append("name", filename);
       data.append("file", file);
       updateUser.profilePic = filename;
-      console.log(data);
       try {
         await axios.post("/upload", data);
       } catch (error) {

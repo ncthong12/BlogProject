@@ -31,9 +31,10 @@ const SamplePrevArrow = (props) => {
 };
 export const Category = ({ cats }) => {
   const settings = {
+    useTransform: false,
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 3,
     slidesToScroll: 2,
     nextArrow: <SampleNextArrow />,

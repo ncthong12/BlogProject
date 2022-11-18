@@ -1,6 +1,5 @@
 import React from "react";
 import "./blog.css";
-import { blog } from "../../assets/data/data";
 import {
   AiOutlineTags,
   AiOutlineClockCircle,

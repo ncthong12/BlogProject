@@ -13,7 +13,7 @@ export const User = () => {
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" })
-    window.location.reload()
+    // window.location.reload()
   }
   const [profileOpen, setProfileOpen] = useState(false)
   const close = () => {

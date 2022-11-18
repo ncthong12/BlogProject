@@ -11,22 +11,26 @@ export const Home = () => {
   // setp 2
   const { search } = useLocation()
   // const location = useLocation()
-  //console.log(location)
 
   useEffect(() => {
     const fetchPost = async () => {
       const res = await axios.get("/posts" + search)
       setPosts(res.data)
     }
-    fetchPost()
-  }, [search])
-  useEffect(() => {
     const getCat = async () => {
       const res = await axios.get("/category" + search)
       setCat(res.data)
     }
     getCat()
+    fetchPost()
   }, [search])
+  // useEffect(() => {
+  //   const getCat = async () => {
+  //     const res = await axios.get("/category" + search)
+  //     setCat(res.data)
+  //   }
+  //   getCat()
+  // }, [search])
   return (
     <>
       <Category cats={cats}/>

@@ -18,7 +18,6 @@ export const Create = () => {
   const { search } = useLocation();
 
   useEffect(() => {
-    console.log('create')
     const getCat = async () => {
       const res = await axios.get("/category" + search);
       setCat(res.data);
