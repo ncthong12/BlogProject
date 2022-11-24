@@ -33,13 +33,13 @@ export const Account = () => {
       data.append("file", file);
       updateUser.profilePic = filename;
       try {
-        await axios.post("/upload", data);
+        await axios.post("/api/upload", data);
       } catch (error) {
         console.log(error);
       }
     }
     try {
-      const res = await axios.put("/users/" + user._id, updateUser);
+      const res = await axios.put("/api/users/" + user._id, updateUser);
       setSucc(true);
       dispatch({ type: "UPDATE_SUCC", payload: res.data });
       // window.location.reload()

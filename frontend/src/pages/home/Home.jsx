@@ -15,7 +15,7 @@ export const Home = () => {
   useEffect(() => {
     console.log("post call");
     const fetchPost = async () => {
-      const res = await axios.get("/posts" + search);
+      const res = await axios.get("/api/posts" + search);
       setPosts(res.data);
     };
     fetchPost();
@@ -23,7 +23,7 @@ export const Home = () => {
   useEffect(() => {
     console.log("category call");
     const getCat = async () => {
-      const res = await axios.get("/category" + search);
+      const res = await axios.get("/api/category" + search);
       setCat(res.data);
     };
     getCat();
