@@ -20,7 +20,6 @@ export const User = () => {
     setProfileOpen(false)
   }
 
-  const PublicFlo = "http://localhost:5000/images/"
 
   return (
     <>
@@ -28,14 +27,14 @@ export const User = () => {
         {user ? (
           <>
             <button className='img' onClick={() => setProfileOpen(!profileOpen)}>
-              <img src={PublicFlo + user.profilePic} alt='' />
+              <img src={user.profilePic} alt='' />
             </button>
             {profileOpen && (
               <div className='openProfile boxItems' onClick={close}>
                 <Link to={"/account"}>
                   <div className='image'>
                     <div className='img'>
-                      <img src={PublicFlo + user.profilePic} alt='' />
+                      <img src={user.profilePic} alt='' />
                     </div>
                     <div className='text'>
                       <h4>{user.username}</h4>

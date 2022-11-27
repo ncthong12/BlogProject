@@ -33,7 +33,6 @@ export const DetailsPages = () => {
 
   // step 3
   // file create garne time add garne
-  const PublicFlo = "http://localhost:5000/images/";
   const { user } = useContext(Context);
 
   const handleDelete = async () => {
@@ -64,7 +63,7 @@ export const DetailsPages = () => {
       <section className="singlePage">
         <div className="container">
           <div className="left">
-            {post.photo && <img src={PublicFlo + post.photo} alt="" />}
+            {post.photo && <img src={post.photo} alt="" />}
           </div>
           <div className="right">
             {user ? (

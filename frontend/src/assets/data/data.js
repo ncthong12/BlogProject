@@ -25,6 +25,9 @@ export const nav = [
     url: "/contact",
   },
 ]
+export const serverIp ="http://localhost:5000/"
+export const expiration = 345600
+export const key = '7f0c424b6f61b56d29e2aeed4c290834'
 export const category = [
   {
     id: 1,

@@ -6,7 +6,8 @@ import { useContext } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
 import { Autocomplete, TextField } from "@mui/material";
-import { useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom";
+import { expiration, key } from "../../assets/data/data";
 
 export const Create = () => {
   const [cats, setCat] = useState([]);
@@ -40,11 +41,16 @@ export const Create = () => {
       const data = new FormData();
       const filename = Date.now() + file.name;
       data.append("name", filename);
-      data.append("file", file);
-      newPost.photo = filename;
+      data.append("image", file);
 
       try {
-        await axios.post("/api/upload", data);
+        const res = await axios.post("https://api.imgbb.com/1/upload", data, {
+          params: {
+            expiration,
+            key,
+          },
+        });
+        newPost.photo = res.data.data.url;
       } catch (error) {
         console.log(error);
       }

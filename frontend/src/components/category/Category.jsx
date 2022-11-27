@@ -6,8 +6,7 @@ import Slider from "react-slick";
 import { GrFormPrevious } from "react-icons/gr";
 import { MdNavigateNext } from "react-icons/md";
 import { Link } from "react-router-dom";
-
-const PublicFlo = "http://localhost:5000/";
+import { serverIp } from "../../assets/data/data";
 
 const SampleNextArrow = (props) => {
   const { onClick } = props;
@@ -58,7 +57,7 @@ export const Category = ({ cats }) => {
             {cats.map((item) => (
               // <div className="boxs">
                 <div className="box" key={item.id}>
-                  <img src={PublicFlo + item.cover} alt="cover" />
+                  <img src={serverIp + item.cover} alt="cover" />
                   <div className="overlay">
                     {/* TODO
                     item.name

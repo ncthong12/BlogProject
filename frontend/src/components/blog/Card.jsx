@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 
 export const Card = ({ posts }) => {
   // create file garnebelema
-  const PublicFlo = "http://localhost:5000/images/";
   return (
     <>
       <section className="blog">
@@ -22,7 +21,7 @@ export const Card = ({ posts }) => {
               <div className="box boxItems" key={item._id}>
                 {/* first ma yo  <div className='img'>{item.photo && <img src={item.cover} alt='' />}</div>*/}
                 <div className="img">
-                  {item.photo && <img src={PublicFlo + item.photo} alt="" />}
+                  {item.photo && <img src={item.photo} alt="" />}
                 </div>
                 <div className="details">
                   <div className="tag">

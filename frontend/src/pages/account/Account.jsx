@@ -3,6 +3,7 @@ import { Context } from "../../context/Context";
 import "./account.css";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import axios from "axios";
+import { expiration, key } from "../../assets/data/data";
 
 export const Account = () => {
   const { user, dispatch } = useContext(Context);
@@ -13,7 +14,6 @@ export const Account = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [succ, setSucc] = useState(false);
-  const PublicFlo = "http://localhost:5000/images/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,13 +30,15 @@ export const Account = () => {
 
       const filename = Date.now() + "-" + file.name;
       data.append("name", filename);
-      data.append("file", file);
-      updateUser.profilePic = filename;
-      try {
-        await axios.post("/api/upload", data);
-      } catch (error) {
-        console.log(error);
-      }
+      data.append("image", file);
+
+      const res = await axios.post("https://api.imgbb.com/1/upload", data, {
+        params: {
+          expiration,
+          key,
+        },
+      });
+      updateUser.profilePic = res.data.data.url;
     }
     try {
       const res = await axios.put("/api/users/" + user._id, updateUser);
@@ -60,7 +62,7 @@ export const Account = () => {
                     src={
                       file
                         ? URL.createObjectURL(file)
-                        : PublicFlo + user.profilePic
+                        : user.profilePic
                     }
                     alt=""
                   />
