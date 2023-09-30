@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import { GrFormPrevious } from "react-icons/gr";
 import { MdNavigateNext } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { serverIp } from "../../assets/data/data";
+// import { serverIp } from "../../assets/data/data";
 
 const SampleNextArrow = (props) => {
   const { onClick } = props;
@@ -28,7 +28,7 @@ const SamplePrevArrow = (props) => {
     </div>
   );
 };
-export const Category = ({ cats }) => {
+export const Category = ({ cats, serverIp }) => {
   const settings = {
     useTransform: false,
     dots: false,
@@ -57,7 +57,7 @@ export const Category = ({ cats }) => {
             {cats.map((item) => (
               // <div className="boxs">
                 <div className="box" key={item.id}>
-                  <img src={serverIp + item.cover} alt="cover" />
+                  <img src={"http://"+serverIp+":5000/" + item.cover} alt="cover" />
                   <div className="overlay">
                     {/* TODO
                     item.name

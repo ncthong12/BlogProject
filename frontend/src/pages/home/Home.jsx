@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 export const Home = () => {
   const [posts, setPosts] = useState([]);
   const [cats, setCat] = useState([]);
+  const [serverIp, setIp] = useState('');
 
   // setp 2
   const { search } = useLocation();
@@ -28,10 +29,17 @@ export const Home = () => {
     };
     getCat();
   }, []);
+  useEffect(()=>{
+    const getIp = async () => {
+      const res = await axios.get("/api/category/ip");
+      setIp(res.data)
+    }
+    getIp()
+  }, [])
   return (
     <>
       {console.log("render")}
-      <Category cats={cats} />
+      <Category cats={cats} serverIp={serverIp}/>
       <Card posts={posts} />
     </>
   );

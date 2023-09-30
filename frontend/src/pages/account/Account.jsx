@@ -14,7 +14,22 @@ export const Account = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [succ, setSucc] = useState(false);
-
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm("Do you want to delete your account?") == true) {
+      try {
+        const res = await axios.delete("/api/users/" + user._id, {
+          data: {
+            userId: user._id,
+          },
+        });
+      } catch (error) {
+        dispatch({ type: "UPDATE_FAILED" });
+      }
+      dispatch({ type: "LOGOUT" });
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "UPDATE_START" });
@@ -43,7 +58,10 @@ export const Account = () => {
     try {
       const res = await axios.put("/api/users/" + user._id, updateUser);
       setSucc(true);
-      dispatch({ type: "UPDATE_SUCC", payload: res.data });
+      updateUser.password !== user.password
+        ? dispatch({ type: "LOGOUT" })
+        : dispatch({ type: "UPDATE_SUCC", payload: res.data });
+
       // window.location.reload()
     } catch (error) {
       dispatch({ type: "UPDATE_FAILED" });
@@ -59,11 +77,7 @@ export const Account = () => {
               <div className="left">
                 <div className="img flexCenter">
                   <img
-                    src={
-                      file
-                        ? URL.createObjectURL(file)
-                        : user.profilePic
-                    }
+                    src={file ? URL.createObjectURL(file) : user.profilePic}
                     alt=""
                   />
                   <label htmlFor="inputfile">
@@ -95,9 +109,14 @@ export const Account = () => {
                   type="password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <div className="twoButton">
                 <button className="button" type="submit">
                   Update
                 </button>
+                <button className="button" type="button" onClick={handleDelete}>
+                  Delete
+                </button>
+                </div>
                 {succ && <span>Profile is Updated</span>}
               </form>
             </div>

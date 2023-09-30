@@ -45,6 +45,9 @@
   margin-bottom: 10px;
   display: block;
 }
+.accountInfo .twoButton button{
+  margin-right: 10px;
+}
 .profile h4 {
   text-transform: capitalize;
   color: #000;

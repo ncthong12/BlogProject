@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const Category = require("../model/category")
+const IP = require('ip')
 
 router.post("/", async (req, res) => {
   const newCat = new Category(req.body)
@@ -18,6 +19,11 @@ router.get("/", async (req, res) => {
     } catch (error) {
       res.status(500).json(error)
     }
+  })
+
+  router.get("/ip", async (req, res) => {
+    const ipAddress = IP.address();
+    res.send(ipAddress)
   })
 
 module.exports = router

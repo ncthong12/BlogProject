@@ -21,6 +21,10 @@ const PostSchema = new mongoose.Schema({
     categories: {
         type: Array,
         require: false,
+    },
+    like: {
+        type: Number,
+        require: true,
     }
 },{
     timestamps: true
